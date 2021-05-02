@@ -395,6 +395,45 @@
 </head>
 <body class="antialiased">
 <h1>Test Lara 8 Books</h1>
+<div class="page-wrapper">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+
+        </div>
+    @endif
+    @if(session('success'))
+        <div class="alert alert-success" role="alert">
+            {{session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @elseif(session('failed'))
+        <div class="alert alert-danger" role="alert">
+            {{session('failed')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert"
+         style="display: none">
+        <span id="contentMessage"></span>
+        <button type="button" class="close" id="closeMessage"><span
+                    aria-hidden="true">×</span></button>
+    </div>
+    <main class="py-4">
+        @yield('content')
+    </main>
+</div>
 <table id="bookTable">
     <thead>
     <tr>
