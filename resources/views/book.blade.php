@@ -454,26 +454,27 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Nama</label>
-            <input type="text" name="book_name">
+            <input type="text" name="book_name" placeholder="isi nama di sini">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
 </form>
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
 <script>
     $(document).ready(function () {
-        {{--$('#bookTable').DataTable({--}}
-        {{--    processing: true,--}}
-        {{--    serverSide: true,--}}
-        {{--    ajax: "{{route('/bookajax')}}",--}}
-        {{--    columns: [--}}
-        {{--        {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},--}}
-        {{--    ]--}}
-        {{--});--}}
+        $('#bookTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{url('/ajaxBook')}}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                {data: 'book_name', name: 'book_name'},
+            ]
+        });
     });
 </script>
 </body>

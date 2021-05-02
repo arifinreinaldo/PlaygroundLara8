@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class BookController extends Controller
 {
@@ -16,7 +16,7 @@ class BookController extends Controller
 
     public function ajax(Request $request)
     {
-        $results = DB::table('books AS u');
+        $results = DB::table('books');
         if ($request->ajax()) {
             return Datatables::of($results)
                 ->addIndexColumn()
