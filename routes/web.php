@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/book', [\App\Http\Controllers\BookController::class, 'index'])->name('book');
+Route::post('/saveBook', [\App\Http\Controllers\BookController::class, 'store']);
 Route::get('/bookajax', [\App\Http\Controllers\BookController::class, 'ajax'])->name('bookajax');
 Route::get('/', function () {
     return view('welcome');

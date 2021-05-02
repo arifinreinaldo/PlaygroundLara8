@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -21,5 +22,21 @@ class BookController extends Controller
                 ->addIndexColumn()
                 ->make(true);
         }
+    }
+
+    public function store(Request $request)
+    {
+
+        $data = request()->validate([
+            'book_name' => 'required'
+        ]);
+
+        try {
+            $mactivitylogs = Book::create($data);
+        } catch (Exception $e) {
+
+            return redirect("/book")->with('failed', 'Failed insert data.');
+        }
+        return redirect("/book")->with('success', 'Success insert data.');
     }
 }

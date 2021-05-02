@@ -409,19 +409,32 @@
 
     </tfooter>
 </table>
+
+<form method="POST" action="{{url('/saveBook')}}" enctype="multipart/form-data">
+    @csrf
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Nama</label>
+            <input type="text" name="book_name">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
 <script>
     $(document).ready(function () {
-        $('#bookTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{route('/bookajax')}}",
-            columns: [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-            ]
-        });
+        {{--$('#bookTable').DataTable({--}}
+        {{--    processing: true,--}}
+        {{--    serverSide: true,--}}
+        {{--    ajax: "{{route('/bookajax')}}",--}}
+        {{--    columns: [--}}
+        {{--        {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},--}}
+        {{--    ]--}}
+        {{--});--}}
     });
 </script>
 </body>
